@@ -19,7 +19,9 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "noImplicitAny": 0,
+    "@typescript-eslint/no-explicit-any": "off",
+    "prettier/prettier": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
