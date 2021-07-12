@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CSVReader } from 'react-papaparse';
 
 import Layout from './components/Layout';
@@ -18,10 +18,19 @@ const App: React.FC = () => {
   const buttonRef = useRef<any>();
 
   function handleFileUpload(dataFile: any) {
-    console.log(dataFile);
+    if (dataFile.length > 0) {
+      setLoading(true);
+      setData(dataFile);
+    }
   }
 
-  console.log(data);
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setChecked(true);
+      }, 5000);
+    }
+  }, [data, loading, checked]);
 
   const showData = () => {
     if (loading && !checked) {
@@ -42,7 +51,7 @@ const App: React.FC = () => {
     }
 
     if (loading && checked) {
-      return <List />;
+      return <List data={data} loading={setLoading} checked={setChecked}/>;
     }
 
     return (
@@ -56,7 +65,7 @@ const App: React.FC = () => {
             noProgressBar
             noClick
             onFileLoad={handleFileUpload}
-            config={{ delimiter: ';' }}
+            config={{ delimiter: ';', skipEmptyLines: true }}
           >
             {() => (
               <button
@@ -90,14 +99,6 @@ const App: React.FC = () => {
       </>
     );
   };
-
-  // useEffect(() => {
-  //   if (loading) {
-  //     setTimeout(() => {
-  //       setChecked(true);
-  //     }, 5000);
-  //   }
-  // }, [loading]);
 
   return (
     <>

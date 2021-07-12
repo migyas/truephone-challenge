@@ -10,6 +10,19 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(0,0,0, 0.2);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 50px;
+  }
+
   html {
     font-size: 55%;
   }

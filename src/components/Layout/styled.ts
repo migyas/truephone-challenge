@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { CSVReader } from 'react-papaparse';
 
 export const Container = styled.main`
   display: flex;
@@ -8,7 +7,8 @@ export const Container = styled.main`
 `;
 export const Content = styled.div`
   width: 84.2rem;
-  height: 46.8rem;
+  height: 100%;
+  max-height: 80rem;
   margin: 9rem auto;
   background: #ffffff;
   border: 4px solid #3d3ada;
